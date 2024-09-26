@@ -39,19 +39,14 @@
 
             let result = 0;
 
-            // Calculate multiplication or division first
             if (operator1 === '*' || operator1 === '/') {
                 result = operator1 === '*' ? input1 * input2 : input1 / input2;
-                // Apply the second operation
                 result = operator2 === '*' ? result * input3 : result / input3;
             } else {
-                // Apply the first operation
                 result = operator1 === '+' ? input1 + input2 : input1 - input2;
-                // Apply the second operation
                 result = operator2 === '+' ? result + input3 : result - input3;
             }
 
-            // Display the result
             document.getElementById("result").innerText = "Result: " + result;
         };
     </script>
