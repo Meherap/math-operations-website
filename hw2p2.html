@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Operations</title>
+</head>
+<body>
+    <h1>Math Operations</h1>
+    <form id="mathForm">
+        <input type="number" id="input1" placeholder="Input 1" required>
+        <select id="operator1" required>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="input2" placeholder="Input 2" required>
+        <select id="operator2" required>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="input3" placeholder="Input 3" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("mathForm").onsubmit = function(event) {
+            event.preventDefault();
+            const input1 = parseFloat(document.getElementById("input1").value);
+            const operator1 = document.getElementById("operator1").value;
+            const input2 = parseFloat(document.getElementById("input2").value);
+            const operator2 = document.getElementById("operator2").value;
+            const input3 = parseFloat(document.getElementById("input3").value);
+
+            let result = 0;
+
+            // Calculate multiplication or division first
+            if (operator1 === '*' || operator1 === '/') {
+                result = operator1 === '*' ? input1 * input2 : input1 / input2;
+                // Apply the second operation
+                result = operator2 === '*' ? result * input3 : result / input3;
+            } else {
+                // Apply the first operation
+                result = operator1 === '+' ? input1 + input2 : input1 - input2;
+                // Apply the second operation
+                result = operator2 === '+' ? result + input3 : result - input3;
+            }
+
+            // Display the result
+            document.getElementById("result").innerText = "Result: " + result;
+        };
+    </script>
+</body>
+</html>
